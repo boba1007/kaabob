@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Bob Le | Xin Chào"
+  description="Software engineer, chess master, and jiu-jitsu practitioner. Building software and technology solutions. Working remotely on projects worldwide."
+>
+  <Nav />
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

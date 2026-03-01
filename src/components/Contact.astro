@@ -1,0 +1,83 @@
+<section
+  id="work"
+  class="py-24 md:py-48 px-6 sm:px-8 bg-black"
+  aria-labelledby="work-heading"
+>
+  <div class="max-w-3xl mx-auto flex flex-col items-start gap-16">
+    <p
+      id="work-label"
+      class="opacity-0 font-body font-light text-white"
+      style="font-size: 0.58rem; letter-spacing: 0.45em; text-transform: uppercase"
+    >
+      Work
+    </p>
+
+    <h2
+      id="work-heading"
+      class="opacity-0 font-display font-light text-white"
+      style="font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: -0.05em; line-height: 1"
+    >
+      Let&rsquo;s build<br />something.
+    </h2>
+
+    <div id="work-links" class="opacity-0 w-full flex flex-col">
+      <a
+        href="https://stellarcapture.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Stellar Capture – view my work"
+        class="group flex items-center justify-between py-8 border-t"
+        style="border-color: rgba(255,255,255,0.15)"
+      >
+        <span
+          class="font-display font-light text-white"
+          style="font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -0.03em"
+        >Work</span>
+        <span
+          class="font-body text-white transition-transform duration-500 group-hover:translate-x-2"
+          style="font-size: 0.8rem; opacity: 0.4"
+          aria-hidden="true"
+        >&#8599;</span>
+      </a>
+
+      <a
+        href="https://www.thebuilderbob.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="The Builder Bob – view my portfolio"
+        class="group flex items-center justify-between py-8 border-t border-b"
+        style="border-color: rgba(255,255,255,0.15)"
+      >
+        <span
+          class="font-display font-light text-white"
+          style="font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -0.03em"
+        >Portfolio</span>
+        <span
+          class="font-body text-white transition-transform duration-500 group-hover:translate-x-2"
+          style="font-size: 0.8rem; opacity: 0.4"
+          aria-hidden="true"
+        >&#8599;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from '../scripts/gsap-init.ts';
+
+  const label = document.getElementById('work-label');
+  const heading = document.getElementById('work-heading');
+  const links = document.getElementById('work-links');
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#work',
+      start: 'top 65%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  tl.fromTo(label, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power3.out' });
+  tl.fromTo(heading, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }, 0.15);
+  tl.fromTo(links, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.5);
+</script>

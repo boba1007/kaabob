@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import logoSrc from '../assets/logo.png';
+---
+
+<nav
+  id="nav"
+  class="opacity-0 fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-8 md:px-12 py-5 pointer-events-none"
+  style="background: rgba(0,0,0); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px)"
+  aria-label="Main navigation"
+>
+  <a
+    href="/"
+    class="pointer-events-auto block shrink-0"
+    aria-label="Home"
+  >
+    <Image
+      src={logoSrc}
+      alt="kaabob"
+      width={26}
+      height={26}
+      format="webp"
+      loading="eager"
+      style="filter: invert(1); display: block"
+    />
+  </a>
+
+  <ul class="flex gap-6 sm:gap-8 list-none pointer-events-auto" role="list">
+    <li>
+      <a
+        href="#about"
+        class="font-body text-white font-light hover:opacity-60 transition-opacity duration-300"
+        style="font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase"
+      >
+        About
+      </a>
+    </li>
+    <li>
+      <a
+        href="#work"
+        class="font-body text-white font-light hover:opacity-60 transition-opacity duration-300"
+        style="font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase"
+      >
+        Work
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  import { gsap, ScrollTrigger } from '../scripts/gsap-init.ts';
+
+  const nav = document.getElementById('nav');
+  if (nav) {
+    ScrollTrigger.create({
+      trigger: '#hero',
+      start: 'bottom top',
+      onEnter: () => {
+        gsap.to(nav, { opacity: 1, duration: 0.7, ease: 'power3.out' });
+        nav.style.pointerEvents = 'auto';
+      },
+      onLeaveBack: () => {
+        gsap.to(nav, { opacity: 0, duration: 0.4, ease: 'power3.in' });
+        nav.style.pointerEvents = 'none';
+      },
+    });
+  }
+</script>

@@ -1,0 +1,142 @@
+/* Tailwind — applyBaseStyles: false in astro.config.mjs requires manual directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Custom cursor — white fill + mix-blend-mode: difference
+   appears black on white backgrounds, white on black backgrounds */
+#cursor,
+#cursor-follower {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#cursor {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+}
+
+#cursor-follower {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  transition:
+    width 0.25s var(--ease-out-expo),
+    height 0.25s var(--ease-out-expo);
+}
+
+body.cursor-hover #cursor-follower {
+  width: 56px;
+  height: 56px;
+}
+
+@media (hover: none) {
+  #cursor,
+  #cursor-follower {
+    display: none;
+  }
+}
+
+/* Character spans — initial state set via gsap.set() so content is visible on first paint */
+.js-char {
+  display: inline-block;
+  will-change: clip-path, opacity;
+}
+
+/* Ink rule — width grows from 0 via GSAP */
+.ink-rule {
+  width: 0;
+  height: 1px;
+  display: block;
+}
+
+.ink-rule--dark {
+  background: #ffffff;
+}
+
+.ink-rule--light {
+  background: #000000;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  padding: 0.625rem 1.25rem;
+  z-index: 99999;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+  outline: 1px solid #ffffff;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* No-JS fallback */
+.no-js .opacity-0 {
+  opacity: 1 !important;
+}
+
+.no-js .ink-rule {
+  width: 48px !important;
+}

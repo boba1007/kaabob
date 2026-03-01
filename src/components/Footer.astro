@@ -1,0 +1,45 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="py-12 px-8 bg-black" aria-label="Site footer">
+  <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+
+    <p
+      class="font-body font-light text-white opacity-50"
+      style="font-size: 0.62rem; letter-spacing: 0.12em"
+    >
+      &copy; {year} Bob Le
+    </p>
+
+    <nav aria-label="Footer navigation">
+      <ul class="flex gap-8 list-none" role="list">
+        <li>
+          <a
+            href="https://stellarcapture.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Stellar Capture – view my work"
+            class="font-body font-light text-white opacity-50 hover:opacity-100 transition-opacity duration-300"
+            style="font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase"
+          >
+            Work
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.thebuilderbob.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="The Builder Bob – view my portfolio"
+            class="font-body font-light text-white opacity-50 hover:opacity-100 transition-opacity duration-300"
+            style="font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase"
+          >
+            Portfolio
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</footer>

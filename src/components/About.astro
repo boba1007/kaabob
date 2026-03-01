@@ -1,0 +1,126 @@
+<section
+  id="about"
+  class="relative py-24 md:py-48 px-6 sm:px-8 bg-white"
+  aria-labelledby="about-heading"
+>
+  <div class="max-w-3xl mx-auto">
+    <p
+      id="about-label"
+      class="opacity-0 font-body font-light text-black mb-20"
+      style="font-size: 0.58rem; letter-spacing: 0.45em; text-transform: uppercase"
+    >
+      About
+    </p>
+
+    <div class="flex gap-12 md:gap-20 items-start">
+      <!-- Vertical ink stroke drawn by GSAP on scroll -->
+      <span
+        id="about-stroke"
+        class="flex-none block w-px bg-black mt-2"
+        style="height: 0; will-change: height"
+        aria-hidden="true"></span>
+
+      <div class="flex flex-col gap-12">
+        <h2
+          id="about-heading"
+          class="opacity-0 font-display font-light text-black"
+          style="font-size: clamp(2rem, 4.5vw, 3.25rem); letter-spacing: -0.04em; line-height: 1.05"
+        >
+          Xin ch&agrave;o.<br />I&rsquo;m Bob Le.
+        </h2>
+
+        <div id="about-story" class="opacity-0 flex flex-col gap-5 max-w-lg">
+          <p class="font-body font-light text-black text-base leading-relaxed">
+            Software engineer, chess master, Brazilian jiu&#8209;jitsu
+            practitioner. I received a scholarship at 15, moved from Vietnam to
+            New York, and spent years studying and working in Texas. Now I work
+            remotely with a tech worker cooperative on projects worldwide.
+          </p>
+          <p class="font-body font-light text-black text-base leading-relaxed">
+            First job: Engineer at a startup taking on TikTok from a ranch-based
+            office. (TikTok won.) Since then, I've founded a tech consultancy,
+            an after-school chess program, and a BJJ academy with a kids
+            program. Through every venture, software and technology remain my
+            core thread, creative work is my outlet, and honesty is
+            non-negotiable.
+          </p>
+        </div>
+
+        <div id="about-lists" class="opacity-0 flex flex-col gap-8 pt-4">
+          <div class="flex flex-col gap-2">
+            <p
+              class="font-body font-light text-black"
+              style="font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase"
+            >
+              Solve
+            </p>
+            <p
+              class="font-body font-light text-black text-sm leading-relaxed"
+              style="color: rgba(0,0,0,0.5)"
+            >
+              Software development &middot; Web design &middot; Technical
+              consulting
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <p
+              class="font-body font-light text-black"
+              style="font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase"
+            >
+              Practice
+            </p>
+            <p
+              class="font-body font-light text-black text-sm leading-relaxed"
+              style="color: rgba(0,0,0,0.5)"
+            >
+              Programming &middot; Music &middot; Photography &middot;
+              Philosophy &middot; Jiu&#8209;jitsu &middot; Calisthenics &middot;
+              Meditation &middot; Reading
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <p
+              class="font-body font-light text-black"
+              style="font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase"
+            >
+              Create
+            </p>
+            <p
+              class="font-body font-light text-black text-sm leading-relaxed"
+              style="color: rgba(0,0,0,0.5)"
+            >
+              Websites &middot; Photographs &middot; Films &middot; Essays
+              &middot; Music
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "../scripts/gsap-init.ts";
+
+  const label = document.getElementById("about-label");
+  const stroke = document.getElementById("about-stroke");
+  const heading = document.getElementById("about-heading");
+  const story = document.getElementById("about-story");
+  const lists = document.getElementById("about-lists");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 65%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.fromTo(label, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
+  tl.fromTo(stroke, { height: 0 }, { height: 280, duration: 1.4, ease: "power3.inOut" }, 0.15);
+  tl.fromTo(heading, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.35);
+  tl.fromTo(story, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.65);
+  tl.fromTo(lists, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.95);
+</script>
